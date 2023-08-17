@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href = "/index.css">
+    <title>Company Website</title>
+    <script>
+
+        function ajaxcall()
+        {
+            var xhtpp = new XMLHttpRequest() ;
+            xhtpp.onreadystatechange = function()
+            {
+                if ( this.readyState  == 4 && this.status == 200)
+                {
+                    var output = this.responseText;
+                    document.getElementById("targetSegment").innerHTML = output ;
+                }
+            };
+            var url = "http://localhost:3001/home";
+            xhtpp.open ( "GET" ,url , true );
+            xhtpp.send();
+        }
+
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">Company Name</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#goals">Future Goals</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <button onclick="ajaxcall()"> AJAX CALL </button>
+    <p id = "targetSegment" > Something will appear </p>
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About the Company</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="container">
+            <h2>Services We Provide</h2>
+            <ul>
+                <li>Service 1</li>
+                <li>Service 2</li>
+                <li>Service 3</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="goals" class="section">
+        <div class="container">
+            <h2>Our Future Goals</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        </div>
+    </section>
+</body>
+</html>
